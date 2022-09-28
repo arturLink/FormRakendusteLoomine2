@@ -41,6 +41,7 @@ namespace FormRakendusteLoomine2
             MatMang.Height = 50;
             MatMang.Location = new Point(550, 300);
             this.Controls.Add(MatMang);
+            MatMang.Click += MatMang_Click;
 
             PiltMang = new Button();
             PiltMang.Text = "Piltide leidmise mäng";
@@ -50,6 +51,12 @@ namespace FormRakendusteLoomine2
             PiltMang.Height = 50;
             PiltMang.Location = new Point(950, 300);
             this.Controls.Add(PiltMang);
+        }
+
+        private void MatMang_Click(object sender, EventArgs e)
+        {
+            MatQuiz matQuiz = new MatQuiz();
+            matQuiz.ShowDialog();
         }
 
         private void Pildid_Click(object sender, EventArgs e)
