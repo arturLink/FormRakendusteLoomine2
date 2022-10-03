@@ -13,6 +13,7 @@ namespace FormRakendusteLoomine2
         Label timeleftlbl;
         Label sumLeft, sumRight;
         NumericUpDown[] vastused = new NumericUpDown[4];
+        Timer timer = new Timer { Interval = 1000 };
 
         TableLayoutPanel tableLayoutPanel;
 
@@ -62,19 +63,21 @@ namespace FormRakendusteLoomine2
             this.Controls.Add(tableLayoutPanel);
 
             l_nimed = new string[5, 4];
-            for(int i= 0; i < 4; i++)
+            timer.Enabled = true;
+            this.DoubleClick += MatQuiz_DoubleClick;
+            timer.Tick += Timer_Tick;
+            for (int i = 0; i < 4; i++)
             {
-                tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(SizeType.Percent, 25F));
-                for (int j =0; j < 5; j++)
+                tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+                for (int j = 0; j < 5; j++)
                 {
-                    tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(SizeType.Percent, 20F));
-                    var l_nimi="L"+j.ToString() + i.ToString();
-                    l_nimed[j,i] = l_nimi;
-                    if (j==1)
-                    {
-                        text = tehed[i];
-                    }
-                    else if(j==0)
+                    tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+                    var l_nimi = "L" + j.ToString() + i.ToString();
+                    l_nimed[j, i] = l_nimi;
+                    if (j == 1) { text = tehed[i]; }
+                    else if (j == 3) { text = "="; }
+                    else if (j == 4) { text = "vastus"; }
+                    else if (j == 0)
                     {
                         int a = random.Next(20);
                         text = a.ToString();
@@ -86,29 +89,62 @@ namespace FormRakendusteLoomine2
                         text = a.ToString();
                         num2[i] = a;
                     }
-                    else if(j==3)
-                    {
-                        text="=";
-                    }
-                    else if (j==4)
+                    if (j == 4)
                     {
                         vastused[i] = new NumericUpDown
                         {
                             Name = tehed[i],
-                            DecimalPlaces = 2,
-                            Minimum = -100
+                            DecimalPlaces = 5,
+                            Minimum = -20,
                         };
                         tableLayoutPanel.Controls.Add(vastused[i], j, i);
                     }
                     else
                     {
-                        text = l_nimi;
+                        Label l = new Label { Text = text };
+                        tableLayoutPanel.Controls.Add(l, j, i);
                     }
-                    Label l = new Label { Text=text};
-                    tableLayoutPanel.Controls.Add(l,j,i);
+
                 }
             }
             this.Controls.Add(tableLayoutPanel);
+            this.Controls.Add(timelbl);
+        }
+
+        private void MatQuiz_DoubleClick(object sender, EventArgs e)
+        {
+            timer.Start();
+            timelbl.Text = timer.ToString();
+            tableLayoutPanel.Controls.Add(timelbl);
+        }
+
+        int tik = 0;
+        private void Matem_DoubleClick(object sender, EventArgs e)
+        {
+            timer.Start();
+            timelbl.Text = timer.ToString();
+            tableLayoutPanel.Controls.Add(timelbl);
+        }
+        private bool  Kontroll()
+        {
+            if (num1[0] + num2[0] == vastused[0].Value &&
+                num1[1] - num2[1] == vastused[1].Value &&
+                num1[2] / num2[2] == vastused[2].Value &&
+                num1[3] * num2[3] == vastused[3].Value)
+            {
+                return true;
+            }
+            else return false;
+        }
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            tik++;
+            timelbl.Text = tik.ToString();
+            if (Kontroll())
+            {
+                timer.Stop();
+                MessageBox.Show("Sinu vastused on õiged", "Palju õnne!");
+            }
         }
     }
 }
