@@ -11,7 +11,6 @@ namespace FormRakendusteLoomine2
     {
         Label timelbl;
         Label timeleftlbl;
-        Label sumLeft, sumRight;
         NumericUpDown[] vastused = new NumericUpDown[4];
         Timer timer = new Timer { Interval = 1000 };
 
@@ -28,7 +27,7 @@ namespace FormRakendusteLoomine2
         public MatQuiz()
         {
             l_nimed = new string[5, 4];
-            this.ClientSize = new System.Drawing.Size(500, 400);
+            this.ClientSize = new System.Drawing.Size(700, 400);
             this.Text = "Matemaatiline äraarvamismäng";
             this.FormBorderStyle = FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
@@ -47,7 +46,7 @@ namespace FormRakendusteLoomine2
             {
                 Text = "Time Left:",
                 Font = new System.Drawing.Font("Arial", 16, System.Drawing.FontStyle.Bold),
-                Location = new System.Drawing.Point(190,0),
+                Location = new System.Drawing.Point(100,0),
                 Size = new System.Drawing.Size(200,30),
             };
             this.Controls.Add(timeleftlbl);
@@ -57,21 +56,21 @@ namespace FormRakendusteLoomine2
                 AutoSize = true,
                 ColumnCount = 5,
                 RowCount = 4,
-                Location = new System.Drawing.Point(50,60),
+                Location = new System.Drawing.Point(0,60),
                 BackColor = System.Drawing.Color.White,
             };
             this.Controls.Add(tableLayoutPanel);
 
             l_nimed = new string[5, 4];
             timer.Enabled = true;
-            this.DoubleClick += MatQuiz_DoubleClick;
+            //this.DoubleClick += MatQuiz_DoubleClick;
             timer.Tick += Timer_Tick;
             for (int i = 0; i < 4; i++)
             {
-                tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+                tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25));
                 for (int j = 0; j < 5; j++)
                 {
-                    tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+                    tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20));
                     var l_nimi = "L" + j.ToString() + i.ToString();
                     l_nimed[j, i] = l_nimi;
                     if (j == 1) { text = tehed[i]; }
@@ -115,16 +114,16 @@ namespace FormRakendusteLoomine2
         {
             timer.Start();
             timelbl.Text = timer.ToString();
-            tableLayoutPanel.Controls.Add(timelbl);
+            //tableLayoutPanel.Controls.Add(timelbl);
         }
 
         int tik = 0;
-        private void Matem_DoubleClick(object sender, EventArgs e)
-        {
-            timer.Start();
-            timelbl.Text = timer.ToString();
-            tableLayoutPanel.Controls.Add(timelbl);
-        }
+        //private void Matem_DoubleClick(object sender, EventArgs e)
+        //{
+        //    timer.Start();
+        //    timelbl.Text = timer.ToString();
+        //    tableLayoutPanel.Controls.Add(timelbl);
+        //}
         private bool  Kontroll()
         {
             if (num1[0] + num2[0] == vastused[0].Value &&

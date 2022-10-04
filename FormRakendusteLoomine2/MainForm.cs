@@ -51,6 +51,13 @@ namespace FormRakendusteLoomine2
             PiltMang.Height = 50;
             PiltMang.Location = new Point(950, 300);
             this.Controls.Add(PiltMang);
+            PiltMang.Click += PiltMang_Click;
+        }
+
+        private void PiltMang_Click(object sender, EventArgs e)
+        {
+            PiltideLeidmise piltideLeidmise = new PiltideLeidmise();
+            piltideLeidmise.ShowDialog();
         }
 
         private void MatMang_Click(object sender, EventArgs e)

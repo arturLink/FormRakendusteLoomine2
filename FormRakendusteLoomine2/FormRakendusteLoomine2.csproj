@@ -55,6 +55,9 @@
     <Compile Include="MatQuiz.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="PiltideLeidmise.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PiltVaatamine.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +65,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PiltideLeidmise.resx">
+      <DependentUpon>PiltideLeidmise.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
