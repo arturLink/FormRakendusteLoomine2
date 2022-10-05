@@ -17,7 +17,8 @@ namespace FormRakendusteLoomine2
         "b", "b", "v", "v", "w", "w", "z", "z"
     };
 
-        Timer timer = new Timer { Interval = 750 };
+        public Timer timer = new Timer { Interval = 750 };
+
         Label firstClicked = null;
         Label secondClicked = null;
 
@@ -29,7 +30,9 @@ namespace FormRakendusteLoomine2
             this.Text = "Piltide Leidmise Mäng";
             this.MaximizeBox = false;
 
-            tableLayoutPanel1 = new TableLayoutPanel()
+            
+
+        tableLayoutPanel1 = new TableLayoutPanel()
             {
                 ColumnCount = 4,
                 Location = new System.Drawing.Point(3, 4),
@@ -53,7 +56,7 @@ namespace FormRakendusteLoomine2
             this.Controls.Add(this.tableLayoutPanel1);
 
             
-
+            
             //1 veerg
             lbl1 = new Label()
             {
@@ -251,7 +254,19 @@ namespace FormRakendusteLoomine2
             lbl1.ForeColor = lbl1.BackColor;
             lbl1.Click += Lbl1_Click;
 
-            AssignIconsToSquares();
+            timer.Tick += Timer_Tick;
+        AssignIconsToSquares();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            timer.Stop();
+
+            firstClicked.ForeColor = firstClicked.BackColor;
+            secondClicked.ForeColor = secondClicked.BackColor;
+
+            firstClicked = null;
+            secondClicked = null;
         }
 
         private void Lbl1_Click(object sender, EventArgs e)
@@ -272,8 +287,19 @@ namespace FormRakendusteLoomine2
                     firstClicked.ForeColor = Color.Black;
                     return;
                 }
+                
                 secondClicked = clickedLabel;
                 secondClicked.ForeColor = Color.Black;
+
+                CheckForWinner();
+
+                if (firstClicked.Text == secondClicked.Text)
+                {
+                    firstClicked = null;
+                    secondClicked = null;
+                    return;
+                }
+
                 timer.Start();
             }
         }
@@ -290,6 +316,21 @@ namespace FormRakendusteLoomine2
                     icons.RemoveAt(randomNumber);
                 }
             }
+        }
+        public void CheckForWinner()
+        {
+            foreach (Control control in tableLayoutPanel1.Controls)
+            {
+                Label iconLabel = control as Label;
+
+                if (iconLabel != null)
+                {
+                    if (iconLabel.ForeColor == iconLabel.BackColor)
+                        return;
+                }
+            }
+            MessageBox.Show("You matched all the icons!", "Congratulations");
+            Close();
         }
     }
 }
