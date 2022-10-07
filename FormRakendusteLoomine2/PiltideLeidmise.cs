@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -55,204 +56,228 @@ namespace FormRakendusteLoomine2
 
             this.Controls.Add(this.tableLayoutPanel1);
 
-            
-            
-            //1 veerg
-            lbl1 = new Label()
+            List<Label> lblList = new List<Label>();
+            int veerg = 0;
+            int riida = 0;
+
+            for (int i = 0; i <= 15; i++)
             {
-                BackColor= System.Drawing.Color.CornflowerBlue,
-                AutoSize=false,
-                Dock=System.Windows.Forms.DockStyle.Fill,
-                TextAlign=System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 0, 0);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 0, 1);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 0, 2);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 0, 3);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            //2 veerg
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 1, 0);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 1, 1);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 1, 2);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 1, 3);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            //3 veerg
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 2, 0);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 2, 1);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 2, 2);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 2, 3);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            //4 veerg
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 3, 0);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 3, 1);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 3, 2);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 3, 3);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
+                var lbl1 = new Label()
+                {
+                    BackColor = System.Drawing.Color.CornflowerBlue,
+                    AutoSize = false,
+                    Dock = System.Windows.Forms.DockStyle.Fill,
+                    TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+                    Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
+                    Text = "c",
+                };
+                //zakon4i tsikl
+                lblList.Add(lbl1);
+                for (int r = 0; r < 3; riida++)
+                {
+                    
+                }
+                
+                lbl1.ForeColor = lbl1.BackColor;
+                lbl1.Click += Lbl1_Click;
+            }
+
+            ////1 veerg
+            //lbl1 = new Label()
+            //{
+            //    BackColor= System.Drawing.Color.CornflowerBlue,
+            //    AutoSize=false,
+            //    Dock=System.Windows.Forms.DockStyle.Fill,
+            //    TextAlign=System.Drawing.ContentAlignment.MiddleCenter,
+            //    Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
+            //    Text = "c",
+            //};
+            //tableLayoutPanel1.Controls.Add(lbl1, 0, 0);
+            //lbl1.ForeColor = lbl1.BackColor;
+            //lbl1.Click += Lbl1_Click;
+            //lbl1 = new Label()
+            //{
+            //    BackColor = System.Drawing.Color.CornflowerBlue,
+            //    AutoSize = false,
+            //    Dock = System.Windows.Forms.DockStyle.Fill,
+            //    TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+            //    Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
+            //    Text = "c",
+            //};
+            //tableLayoutPanel1.Controls.Add(lbl1, 0, 1);
+            //lbl1.ForeColor = lbl1.BackColor;
+            //lbl1.Click += Lbl1_Click;
+            //lbl1 = new Label()
+            //{
+            //    BackColor = System.Drawing.Color.CornflowerBlue,
+            //    AutoSize = false,
+            //    Dock = System.Windows.Forms.DockStyle.Fill,
+            //    TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+            //    Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
+            //    Text = "c",
+            //};
+            //tableLayoutPanel1.Controls.Add(lbl1, 0, 2);
+            //lbl1.ForeColor = lbl1.BackColor;
+            //lbl1.Click += Lbl1_Click;
+            //lbl1 = new Label()
+            //{
+            //    BackColor = System.Drawing.Color.CornflowerBlue,
+            //    AutoSize = false,
+            //    Dock = System.Windows.Forms.DockStyle.Fill,
+            //    TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+            //    Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
+            //    Text = "c",
+            //};
+            //tableLayoutPanel1.Controls.Add(lbl1, 0, 3);
+            //lbl1.ForeColor = lbl1.BackColor;
+            //lbl1.Click += Lbl1_Click;
+            ////2 veerg
+            //lbl1 = new Label()
+            //{
+            //    BackColor = System.Drawing.Color.CornflowerBlue,
+            //    AutoSize = false,
+            //    Dock = System.Windows.Forms.DockStyle.Fill,
+            //    TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+            //    Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
+            //    Text = "c",
+            //};
+            //tableLayoutPanel1.Controls.Add(lbl1, 1, 0);
+            //lbl1.ForeColor = lbl1.BackColor;
+            //lbl1.Click += Lbl1_Click;
+            //lbl1 = new Label()
+            //{
+            //    BackColor = System.Drawing.Color.CornflowerBlue,
+            //    AutoSize = false,
+            //    Dock = System.Windows.Forms.DockStyle.Fill,
+            //    TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+            //    Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
+            //    Text = "c",
+            //};
+            //tableLayoutPanel1.Controls.Add(lbl1, 1, 1);
+            //lbl1.ForeColor = lbl1.BackColor;
+            //lbl1.Click += Lbl1_Click;
+            //lbl1 = new Label()
+            //{
+            //    BackColor = System.Drawing.Color.CornflowerBlue,
+            //    AutoSize = false,
+            //    Dock = System.Windows.Forms.DockStyle.Fill,
+            //    TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+            //    Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
+            //    Text = "c",
+            //};
+            //tableLayoutPanel1.Controls.Add(lbl1, 1, 2);
+            //lbl1.ForeColor = lbl1.BackColor;
+            //lbl1.Click += Lbl1_Click;
+            //lbl1 = new Label()
+            //{
+            //    BackColor = System.Drawing.Color.CornflowerBlue,
+            //    AutoSize = false,
+            //    Dock = System.Windows.Forms.DockStyle.Fill,
+            //    TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+            //    Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
+            //    Text = "c",
+            //};
+            //tableLayoutPanel1.Controls.Add(lbl1, 1, 3);
+            //lbl1.ForeColor = lbl1.BackColor;
+            //lbl1.Click += Lbl1_Click;
+            ////3 veerg
+            //lbl1 = new Label()
+            //{
+            //    BackColor = System.Drawing.Color.CornflowerBlue,
+            //    AutoSize = false,
+            //    Dock = System.Windows.Forms.DockStyle.Fill,
+            //    TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+            //    Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
+            //    Text = "c",
+            //};
+            //tableLayoutPanel1.Controls.Add(lbl1, 2, 0);
+            //lbl1.ForeColor = lbl1.BackColor;
+            //lbl1.Click += Lbl1_Click;
+            //lbl1 = new Label()
+            //{
+            //    BackColor = System.Drawing.Color.CornflowerBlue,
+            //    AutoSize = false,
+            //    Dock = System.Windows.Forms.DockStyle.Fill,
+            //    TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+            //    Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
+            //    Text = "c",
+            //};
+            //tableLayoutPanel1.Controls.Add(lbl1, 2, 1);
+            //lbl1.ForeColor = lbl1.BackColor;
+            //lbl1.Click += Lbl1_Click;
+            //lbl1 = new Label()
+            //{
+            //    BackColor = System.Drawing.Color.CornflowerBlue,
+            //    AutoSize = false,
+            //    Dock = System.Windows.Forms.DockStyle.Fill,
+            //    TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+            //    Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
+            //    Text = "c",
+            //};
+            //tableLayoutPanel1.Controls.Add(lbl1, 2, 2);
+            //lbl1.ForeColor = lbl1.BackColor;
+            //lbl1.Click += Lbl1_Click;
+            //lbl1 = new Label()
+            //{
+            //    BackColor = System.Drawing.Color.CornflowerBlue,
+            //    AutoSize = false,
+            //    Dock = System.Windows.Forms.DockStyle.Fill,
+            //    TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+            //    Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
+            //    Text = "c",
+            //};
+            //tableLayoutPanel1.Controls.Add(lbl1, 2, 3);
+            //lbl1.ForeColor = lbl1.BackColor;
+            //lbl1.Click += Lbl1_Click;
+            ////4 veerg
+            //lbl1 = new Label()
+            //{
+            //    BackColor = System.Drawing.Color.CornflowerBlue,
+            //    AutoSize = false,
+            //    Dock = System.Windows.Forms.DockStyle.Fill,
+            //    TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+            //    Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
+            //    Text = "c",
+            //};
+            //tableLayoutPanel1.Controls.Add(lbl1, 3, 0);
+            //lbl1.ForeColor = lbl1.BackColor;
+            //lbl1.Click += Lbl1_Click;
+            //lbl1 = new Label()
+            //{
+            //    BackColor = System.Drawing.Color.CornflowerBlue,
+            //    AutoSize = false,
+            //    Dock = System.Windows.Forms.DockStyle.Fill,
+            //    TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+            //    Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
+            //    Text = "c",
+            //};
+            //tableLayoutPanel1.Controls.Add(lbl1, 3, 1);
+            //lbl1.ForeColor = lbl1.BackColor;
+            //lbl1.Click += Lbl1_Click;
+            //lbl1 = new Label()
+            //{
+            //    BackColor = System.Drawing.Color.CornflowerBlue,
+            //    AutoSize = false,
+            //    Dock = System.Windows.Forms.DockStyle.Fill,
+            //    TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+            //    Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
+            //    Text = "c",
+            //};
+            //tableLayoutPanel1.Controls.Add(lbl1, 3, 2);
+            //lbl1.ForeColor = lbl1.BackColor;
+            //lbl1.Click += Lbl1_Click;
+            //lbl1 = new Label()
+            //{
+            //    BackColor = System.Drawing.Color.CornflowerBlue,
+            //    AutoSize = false,
+            //    Dock = System.Windows.Forms.DockStyle.Fill,
+            //    TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+            //    Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
+            //    Text = "c",
+            //};
+            //tableLayoutPanel1.Controls.Add(lbl1, 3, 3);
+            //lbl1.ForeColor = lbl1.BackColor;
+            //lbl1.Click += Lbl1_Click;
 
             timer.Tick += Timer_Tick;
         AssignIconsToSquares();
