@@ -1,4 +1,3 @@
-# FormRakendusteLoomine2
 VENE KEELES
 1.
   1) Возможность выбирать размер отображаемой картинки
