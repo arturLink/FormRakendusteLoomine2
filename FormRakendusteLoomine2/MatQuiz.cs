@@ -124,7 +124,7 @@ namespace FormRakendusteLoomine2
         //    timelbl.Text = timer.ToString();
         //    tableLayoutPanel.Controls.Add(timelbl);
         //}
-        private bool  Kontroll()
+        private bool Kontroll()
         {
             if (num1[0] + num2[0] == vastused[0].Value &&
                 num1[1] - num2[1] == vastused[1].Value &&

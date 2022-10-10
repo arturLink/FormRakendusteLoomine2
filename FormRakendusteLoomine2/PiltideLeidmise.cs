@@ -58,12 +58,13 @@ namespace FormRakendusteLoomine2
 
             List<Label> lblList = new List<Label>();
             int veerg = 0;
-            int riida = 0;
+
 
             for (int i = 0; i <= 15; i++)
             {
                 var lbl1 = new Label()
                 {
+                    ForeColor = Color.CornflowerBlue,
                     BackColor = System.Drawing.Color.CornflowerBlue,
                     AutoSize = false,
                     Dock = System.Windows.Forms.DockStyle.Fill,
@@ -71,24 +72,24 @@ namespace FormRakendusteLoomine2
                     Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
                     Text = "c",
                 };
-                //zakon4i tsikl
                 lblList.Add(lbl1);
-                for (int r = 0; r < 3; riida++)
-                {
-                    
-                }
-                
-                lbl1.ForeColor = lbl1.BackColor;
                 lbl1.Click += Lbl1_Click;
             }
-
+            for (int i = 0; i < 3; i++)
+            {
+                for (int riida = 0; riida < 3; riida++)
+                {
+                    tableLayoutPanel1.Controls.Add(lblList[i], riida, veerg);
+                }
+                veerg += 1;
+            }
             ////1 veerg
             //lbl1 = new Label()
             //{
-            //    BackColor= System.Drawing.Color.CornflowerBlue,
-            //    AutoSize=false,
-            //    Dock=System.Windows.Forms.DockStyle.Fill,
-            //    TextAlign=System.Drawing.ContentAlignment.MiddleCenter,
+            //    BackColor = System.Drawing.Color.CornflowerBlue,
+            //    AutoSize = false,
+            //    Dock = System.Windows.Forms.DockStyle.Fill,
+            //    TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
             //    Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
             //    Text = "c",
             //};
