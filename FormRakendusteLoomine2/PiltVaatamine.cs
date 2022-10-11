@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,8 +17,13 @@ namespace FormRakendusteLoomine2
         Button close;
         Button clear;
         Button show;
+        Button bigger;
+        Button smaller;
         PictureBox pilt;
         TableLayoutPanel tableLayoutPanel1;
+
+        int pltWidth = 790;
+        int pltHeight = 400;
         public PiltVaatamine()
         {
             this.ClientSize = new System.Drawing.Size(800, 450);
@@ -41,9 +47,9 @@ namespace FormRakendusteLoomine2
             pilt = new PictureBox()
             {
                 BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D,
-                Dock = System.Windows.Forms.DockStyle.Fill,
+                //Dock = System.Windows.Forms.DockStyle.Fill,
                 Location = new System.Drawing.Point(2, 2),
-                Size = new System.Drawing.Size(100,100),
+                Size = new System.Drawing.Size(pltWidth,pltHeight),
                 TabIndex = 0,
                 TabStop = false
             };
@@ -81,12 +87,26 @@ namespace FormRakendusteLoomine2
                 Text = "Näita",
                 BackColor = Color.White,
                 ForeColor = Color.Black,
-                
             };
             show.Click += Tegevus;
             clear.Click += Tegevus;
             close.Click += Tegevus;
-            Button[] buttons = { clear,show,close};
+
+            bigger = new Button()
+            {
+                Text = "Suurem",
+                BackColor = Color.White,
+                ForeColor = Color.Black,
+            };
+            smaller = new Button()
+            {
+                Text = "Väiksem",
+                BackColor = Color.White,
+                ForeColor = Color.Black,
+            };
+            bigger.Click += SizeManagement;
+            smaller.Click += SizeManagement;
+            Button[] buttons = { clear,show,close,bigger,smaller};
             FlowLayoutPanel flowLayoutPanel = new FlowLayoutPanel()
             {
                 Dock = System.Windows.Forms.DockStyle.Fill,
@@ -102,6 +122,23 @@ namespace FormRakendusteLoomine2
             openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "JPEG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|BMP Files (*.bmp)|*.bmp|All files (*.*)|*.*";
 
+        }
+
+        private void SizeManagement(object sender, EventArgs e)
+        {
+            Button nupp_sender = (Button)sender;
+            if (nupp_sender.Text == "Suurem")
+            {
+                pltWidth += 5;
+                pltHeight += 5;
+                pilt.Size = new Size(pltWidth,pltHeight);
+            }
+            else if (nupp_sender.Text == "Väiksem")
+            {
+                pltWidth -= 5;
+                pltHeight -= 5;
+                pilt.Size = new Size(pltWidth, pltHeight);
+            }
         }
 
         private void Stretch_CheckedChanged(object sender, EventArgs e)
