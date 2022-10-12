@@ -12,7 +12,15 @@ namespace FormRakendusteLoomine2
     public class PiltideLeidmise : Form
     {
         Random random = new Random();
-        List<string> icons = new List<string>()
+        List<string> iconsLihtne = new List<string>()
+    {
+        "!", "!", "N", "N"
+    };
+        List<string> iconsKeskmine = new List<string>()
+    {
+        "!", "!", "N", "N", ",", ",", "k", "k"
+    };
+        List<string> iconsRaske = new List<string>()
     {
         "!", "!", "N", "N", ",", ",", "k", "k",
         "b", "b", "v", "v", "w", "w", "z", "z"
@@ -23,17 +31,51 @@ namespace FormRakendusteLoomine2
         Label firstClicked = null;
         Label secondClicked = null;
 
+        Button lihtne, keskmine, raske;
+
         Label lbl1;
         TableLayoutPanel tableLayoutPanel1;
         public PiltideLeidmise()
         {
-            this.Size = new System.Drawing.Size(550,550);
+            this.Size = new System.Drawing.Size(550,650);
             this.Text = "Piltide Leidmise Mäng";
             this.MaximizeBox = false;
 
-            
+            lihtne = new Button()
+            {
+                Text = "Lihtne",
+                ForeColor = Color.Black,
+                BackColor = Color.White,
+                Width = 100,
+                Height = 25,
+                Location = new Point(100, 550)
+            };
+            this.Controls.Add(lihtne);
+            lihtne.Click += Raskusi_Click;
+            keskmine = new Button()
+            {
+                Text = "Keskmine",
+                ForeColor = Color.Black,
+                BackColor = Color.White,
+                Width = 100,
+                Height = 25,
+                Location = new Point(200, 550)
+            };
+            this.Controls.Add(keskmine);
+            keskmine.Click += Raskusi_Click;
+            raske = new Button()
+            {
+                Text = "Raske",
+                ForeColor = Color.Black,
+                BackColor = Color.White,
+                Width = 100,
+                Height = 25,
+                Location = new Point(300, 550)
+            };
+            this.Controls.Add(raske);
+            raske.Click += Raskusi_Click;
 
-        tableLayoutPanel1 = new TableLayoutPanel()
+            tableLayoutPanel1 = new TableLayoutPanel()
             {
                 ColumnCount = 4,
                 Location = new System.Drawing.Point(3, 4),
@@ -56,238 +98,128 @@ namespace FormRakendusteLoomine2
 
             this.Controls.Add(this.tableLayoutPanel1);
 
-            List<Label> lblList = new List<Label>();
 
-
-            for (int i = 0; i <= 15; i++)
-            {
-                var lbl1 = new Label()
-                {
-                    ForeColor = Color.CornflowerBlue,
-                    BackColor = System.Drawing.Color.CornflowerBlue,
-                    AutoSize = false,
-                    Dock = System.Windows.Forms.DockStyle.Fill,
-                    TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                    Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                    Text = "c",
-            };
-                lbl1.Click += Lbl1_Click;
-                lblList.Add(lbl1);
-            }
-
-            //int riida = 0;
+            //int rida = 0;
             //int veerg = 0;
-            //foreach (Label lbl in lblList)
+            //for (int i = 0; i <= 15; i++)
             //{
-            //    int index =0;
-            //    for (int n = 0; n < 3; n++)
+            //    lbl1 = new Label()
             //    {
-            //        tableLayoutPanel1.Controls.Add(lblList[index], veerg, riida);
-            //        index++;
-            //        riida++;
-            //    }
-            //    veerg += 1;
+            //        BackColor = System.Drawing.Color.CornflowerBlue,
+            //        AutoSize = false,
+            //        Dock = System.Windows.Forms.DockStyle.Fill,
+            //        TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+            //        Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
+            //        Text = "c",
+            //    };
+            //    tableLayoutPanel1.Controls.Add(lbl1, rida, veerg);
+            //    rida++;
+            //    lbl1.ForeColor = lbl1.BackColor;
+            //    lbl1.Click += Lbl1_Click;
             //}
+            //veerg++;
+            //rida = 0;
 
-            //1 veerg
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 0, 0);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 0, 1);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 0, 2);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 0, 3);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            //2 veerg
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 1, 0);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 1, 1);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 1, 2);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 1, 3);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            //3 veerg
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 2, 0);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 2, 1);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 2, 2);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 2, 3);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            //4 veerg
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 3, 0);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 3, 1);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 3, 2);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
-            lbl1 = new Label()
-            {
-                BackColor = System.Drawing.Color.CornflowerBlue,
-                AutoSize = false,
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
-                Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
-                Text = "c",
-            };
-            tableLayoutPanel1.Controls.Add(lbl1, 3, 3);
-            lbl1.ForeColor = lbl1.BackColor;
-            lbl1.Click += Lbl1_Click;
+            //timer.Tick += Timer_Tick;
+            //AssignIconsToSquares();
+        }
 
-            timer.Tick += Timer_Tick;
-        AssignIconsToSquares();
+        private void Raskusi_Click(object sender, EventArgs e)
+        {
+            Button nupp_sender = (Button)sender;
+            if (nupp_sender.Text == "Lihtne")
+            {
+                tableLayoutPanel1.RowCount = 2;
+                tableLayoutPanel1.ColumnCount = 2;
+                int rida = 0;
+                int veerg = 0;
+                keskmine.Hide();
+                raske.Hide();
+                lihtne.Enabled = false;
+                for (int i = 0; i <= 3; i++)
+                {
+                    lbl1 = new Label()
+                    {
+                        BackColor = System.Drawing.Color.CornflowerBlue,
+                        AutoSize = false,
+                        Dock = System.Windows.Forms.DockStyle.Fill,
+                        TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+                        Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
+                        Text = "c",
+                    };
+                    tableLayoutPanel1.Controls.Add(lbl1, rida, veerg);
+                    rida++;
+                    lbl1.ForeColor = lbl1.BackColor;
+                    lbl1.Click += Lbl1_Click;
+                }
+                veerg++;
+                rida = 0;
+
+                timer.Tick += Timer_Tick;
+                AssignIconsToSquaresLihtne();
+            }
+            else if(nupp_sender.Text == "Keskmine")
+            {
+                tableLayoutPanel1.RowCount = 4;
+                tableLayoutPanel1.ColumnCount = 2;
+                int rida = 0;
+                int veerg = 0;
+                lihtne.Hide();
+                raske.Hide();
+                keskmine.Enabled = false;
+                for (int i = 0; i <= 7; i++)
+                {
+                    lbl1 = new Label()
+                    {
+                        BackColor = System.Drawing.Color.CornflowerBlue,
+                        AutoSize = false,
+                        Dock = System.Windows.Forms.DockStyle.Fill,
+                        TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+                        Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
+                        Text = "c",
+                    };
+                    tableLayoutPanel1.Controls.Add(lbl1, rida, veerg);
+                    rida++;
+                    lbl1.ForeColor = lbl1.BackColor;
+                    lbl1.Click += Lbl1_Click;
+                }
+                veerg++;
+                rida = 0;
+
+                timer.Tick += Timer_Tick;
+                AssignIconsToSquaresKeskmine();
+            }
+            else if(nupp_sender.Text == "Raske")
+            {
+                tableLayoutPanel1.RowCount = 4;
+                tableLayoutPanel1.ColumnCount = 4;
+                int rida = 0;
+                int veerg = 0;
+                lihtne.Hide();
+                keskmine.Hide();
+                raske.Enabled = false;
+                for (int i = 0; i <= 15; i++)
+                {
+                    lbl1 = new Label()
+                    {
+                        BackColor = System.Drawing.Color.CornflowerBlue,
+                        AutoSize = false,
+                        Dock = System.Windows.Forms.DockStyle.Fill,
+                        TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+                        Font = new System.Drawing.Font("Webdings", 48, System.Drawing.FontStyle.Bold),
+                        Text = "c",
+                    };
+                    tableLayoutPanel1.Controls.Add(lbl1, rida, veerg);
+                    rida++;
+                    lbl1.ForeColor = lbl1.BackColor;
+                    lbl1.Click += Lbl1_Click;
+                }
+                veerg++;
+                rida = 0;
+
+                timer.Tick += Timer_Tick;
+                AssignIconsToSquaresRaske();
+            }
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -335,17 +267,45 @@ namespace FormRakendusteLoomine2
                 timer.Start();
             }
         }
-
-        public void AssignIconsToSquares()
+        public void AssignIconsToSquaresLihtne()
         {
+
             foreach (Control control in tableLayoutPanel1.Controls)
             {
                 Label iconLabel = control as Label;
                 if (iconLabel != null)
                 {
-                    int randomNumber = random.Next(icons.Count);
-                    iconLabel.Text = icons[randomNumber];
-                    icons.RemoveAt(randomNumber);
+                    int randomNumber = random.Next(iconsLihtne.Count);
+                    iconLabel.Text = iconsLihtne[randomNumber];
+                    iconsLihtne.RemoveAt(randomNumber);
+                }
+            }
+        }
+        public void AssignIconsToSquaresKeskmine()
+        {
+
+            foreach (Control control in tableLayoutPanel1.Controls)
+            {
+                Label iconLabel = control as Label;
+                if (iconLabel != null)
+                {
+                    int randomNumber = random.Next(iconsKeskmine.Count);
+                    iconLabel.Text = iconsKeskmine[randomNumber];
+                    iconsKeskmine.RemoveAt(randomNumber);
+                }
+            }
+        }
+        public void AssignIconsToSquaresRaske()
+        {
+
+            foreach (Control control in tableLayoutPanel1.Controls)
+            {
+                Label iconLabel = control as Label;
+                if (iconLabel != null)
+                {
+                    int randomNumber = random.Next(iconsRaske.Count);
+                    iconLabel.Text = iconsRaske[randomNumber];
+                    iconsRaske.RemoveAt(randomNumber);
                 }
             }
         }

@@ -14,6 +14,8 @@ namespace FormRakendusteLoomine2
         NumericUpDown[] vastused = new NumericUpDown[4];
         Timer timer = new Timer { Interval = 1000 };
 
+        Timer kiirustTimer = new Timer { Interval = 10000 };
+
         TableLayoutPanel tableLayoutPanel;
 
         string[,] l_nimed;
@@ -65,6 +67,8 @@ namespace FormRakendusteLoomine2
             timer.Enabled = true;
             //this.DoubleClick += MatQuiz_DoubleClick;
             timer.Tick += Timer_Tick;
+            //kiirustTimer.Enabled = true;
+            kiirustTimer.Tick += KiirustTimer_Tick;
             for (int i = 0; i < 4; i++)
             {
                 tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25));
@@ -108,6 +112,11 @@ namespace FormRakendusteLoomine2
             }
             this.Controls.Add(tableLayoutPanel);
             this.Controls.Add(timelbl);
+        }
+
+        private void KiirustTimer_Tick(object sender, EventArgs e)
+        {
+            MessageBox.Show("kiiremini lolligas !!!!");
         }
 
         private void MatQuiz_DoubleClick(object sender, EventArgs e)
