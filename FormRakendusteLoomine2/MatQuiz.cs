@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,12 +10,24 @@ namespace FormRakendusteLoomine2
 {
     public class MatQuiz : Form
     {
+        Button close;
         Label timelbl;
         Label timeleftlbl;
         NumericUpDown[] vastused = new NumericUpDown[4];
         Timer timer = new Timer { Interval = 1000 };
+        //list ne rabotaet - razobratsja
+        List<int> intervals = new List<int>
+        {
+            7000,
+            8000,
+            9000,
+            10000,
+            11000,
+            12000
+        };
 
         Timer kiirustTimer = new Timer { Interval = 10000 };
+
 
         TableLayoutPanel tableLayoutPanel;
 
@@ -32,7 +45,8 @@ namespace FormRakendusteLoomine2
             this.ClientSize = new System.Drawing.Size(700, 400);
             this.Text = "Matemaatiline äraarvamismäng";
             this.FormBorderStyle = FormBorderStyle.Fixed3D;
-            this.MaximizeBox = false;
+            this.ControlBox = false;
+
 
             timelbl = new Label()
             {
@@ -43,6 +57,18 @@ namespace FormRakendusteLoomine2
                 Location = new System.Drawing.Point(300,0),
             };
             this.Controls.Add(timelbl);
+
+            close = new Button()
+            {
+                Text = "Sulge aken",
+                ForeColor = Color.Black,
+                BackColor = Color.White,
+                Width = 100,
+                Height = 50,
+                Location = new Point(550, 325)
+            };
+            this.Controls.Add(close);
+            close.Click += Close_Click;
 
             timeleftlbl = new Label()
             {
@@ -67,7 +93,7 @@ namespace FormRakendusteLoomine2
             timer.Enabled = true;
             //this.DoubleClick += MatQuiz_DoubleClick;
             timer.Tick += Timer_Tick;
-            //kiirustTimer.Enabled = true;
+            kiirustTimer.Enabled = true;
             kiirustTimer.Tick += KiirustTimer_Tick;
             for (int i = 0; i < 4; i++)
             {
@@ -114,9 +140,20 @@ namespace FormRakendusteLoomine2
             this.Controls.Add(timelbl);
         }
 
+        private void Close_Click(object sender, EventArgs e)
+        {
+            kiirustTimer.Stop();
+            this.Close();
+        }
+
         private void KiirustTimer_Tick(object sender, EventArgs e)
         {
-            MessageBox.Show("kiiremini lolligas !!!!");
+            Random rnd = new Random();
+            List<string> kir = new List<string>();
+            kir.Add("kiiremini !!!!");
+            kir.Add("sa oled aeglane !!");
+            kir.Add("sa saad paremini teha !!!");
+            MessageBox.Show(kir[rnd.Next(0,2)]);
         }
 
         private void MatQuiz_DoubleClick(object sender, EventArgs e)
