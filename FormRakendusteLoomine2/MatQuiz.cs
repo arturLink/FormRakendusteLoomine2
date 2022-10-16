@@ -10,23 +10,17 @@ namespace FormRakendusteLoomine2
 {
     public class MatQuiz : Form
     {
+        static Random rand = new Random();
         Button close;
         Label timelbl;
         Label timeleftlbl;
         NumericUpDown[] vastused = new NumericUpDown[4];
         Timer timer = new Timer { Interval = 1000 };
         //list ne rabotaet - razobratsja
-        List<int> intervals = new List<int>
-        {
-            7000,
-            8000,
-            9000,
-            10000,
-            11000,
-            12000
-        };
+        static int[] Intervals = { 7000,10000,12000 };
+        
 
-        Timer kiirustTimer = new Timer { Interval = 10000 };
+        Timer kiirustTimer = new Timer { Interval = Intervals[rand.Next(0,Intervals.Length)] };
 
 
         TableLayoutPanel tableLayoutPanel;
